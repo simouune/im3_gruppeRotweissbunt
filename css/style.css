@@ -43,6 +43,7 @@ p {
 .intoSection{
     background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
     padding: 50px 250px;
+    overflow: hidden;
 }
 
 .haupttitel {
@@ -50,9 +51,43 @@ p {
     text-align: left;
 }
 
-.einstiegsFakten   {
+.einstiegsFakten {
     color: white;
     text-align: right;
+}
+
+.faktTexthintergrund {
+    position: relative;
+    background-color: #001F32;
+    display: inline; 
+    padding: 0 5px;
+}
+
+.einstiegsFakt1 {
+    background-image: url("/images/steckerWeissLangNeu.png");
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    margin-right: -670px; /* Verschiebt das Bild (Kabel) horizontal */
+    padding-right: 770px; /* Verschiebt den Text horizontal */
+}
+
+.einstiegsFakt2 {
+    background-image: url("/images/steckerWeissLangNeu.png");
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    margin-right: -770px; /* Verschiebt das Bild (Kabel) horizontal */
+    padding-right: 770px; /* Verschiebt den Text horizontal */
+}
+
+.einstiegsFakt3{
+    background-image: url("/images/steckerWeissLangNeu.png");
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    margin-right: -550px; /* Verschiebt das Bild (Kabel) horizontal */
+    padding-right: 750px; /* Verschiebt den Text horizontal */
 }
 
 
@@ -145,7 +180,8 @@ button {
     flex: 1; /* Beide Boxen nehmen gleich viel Platz ein */
     padding: 30px; /* Padding innerhalb der Boxen */
     box-sizing: border-box; /* Padding wird in die Breite einbezogen */
-    background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
+    background: var(--Background-Intro, linear-gradient(180deg, #001F32 0%, #000101 61%));
     color: white;
     border-radius: 20px; 
+    position: relative; /* Positionierung für Pseudoelemente */
 }
