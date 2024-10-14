@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------*/
-/* Grundeinstellungen */
+/* GRUNDEINSTELLUNGEN */
 /*---------------------------------------------------------------------*/
 
 body {
@@ -37,7 +37,7 @@ p {
 }
 
 /*---------------------------------------------------------------------*/
-/* Intro-Section */
+/* INTRO-SECTION */
 /*---------------------------------------------------------------------*/
 
 .intoSection{
@@ -58,7 +58,7 @@ p {
 
 
 /*---------------------------------------------------------------------*/
-/* Middle-Section */
+/* MIDDLE-SECTION */
 /*---------------------------------------------------------------------*/
 
 .middleSection {
@@ -68,7 +68,7 @@ p {
 }
 
 .middleSectionText{
-    padding: 20px 250px;
+    padding: 20px 0px;
     text-align: center;
 
 }
@@ -131,7 +131,21 @@ button {
 }
 
 /*---------------------------------------------------------------------*/
-/* Journalism-Section */
+/* JOURNALISM-SECTION */
 /*---------------------------------------------------------------------*/
 
+.journalismusTextboxen {
+    display: flex;
+    flex-direction: row; /* Boxen nebeneinander */
+    justify-content: space-between; /* Platz zwischen den Boxen */
+    gap: 20px;
+}
 
+.journalismusTextboxLinks, .journalismusTextboxRechts {
+    flex: 1; /* Beide Boxen nehmen gleich viel Platz ein */
+    padding: 30px; /* Padding innerhalb der Boxen */
+    box-sizing: border-box; /* Padding wird in die Breite einbezogen */
+    background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
+    color: white;
+    border-radius: 20px; 
+}
