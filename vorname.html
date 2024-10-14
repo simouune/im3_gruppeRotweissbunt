@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uebung "Vornamen in St. Gallen"</title>
+</head>
+<body>
+
+    <h1>Uebung "Vornamen in St. Gallen"</h1>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Formular für Eingaben -->
+    <form id="dataForm">
+        <label for="start_time">Start Time:</label>
+        <input type="datetime-local" id="start_time" name="start_time" required>
+        <br>
+        <label for="end_time">End Time:</label>
+        <input type="datetime-local" id="end_time" name="end_time" required>
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+<!--     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="vorname.js"></script>
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Standardformular-Submit-Verhalten
+
+            // Erfassen der Formulardaten
+            const startTime = document.getElementById('start_time').value;
+            const endTime = document.getElementById('end_time').value;
+            const address = document.getElementById('address').value;
+
+            // Senden der Daten an das PHP-Skript
+            fetch(`vorname_api.php?start_time=${encodeURIComponent(startTime)}&end_time=${encodeURIComponent(endTime)}&address=${encodeURIComponent(address)}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Hier kannst du die Antwort des PHP-Skripts verarbeiten
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+
