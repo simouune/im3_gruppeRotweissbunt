@@ -25,7 +25,7 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
 
 });
 
-
+/* Grafik Auslastung per Tag  ----------------------------------------------------*/
 const ctx = document.getElementById('myChart');
 
 const chart = new Chart(ctx, {
@@ -78,4 +78,6 @@ fetch(apiURL)
     .catch(error => {
         console.error('Error:', error);
     });
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
 
