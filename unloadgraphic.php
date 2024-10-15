@@ -75,4 +75,5 @@ usort($resultForGraphic, function($a, $b) {
 $top5Results = array_slice($resultForGraphic, 0, 5);
 
 echo json_encode($top5Results);
+
 //----------------------------------------------------------
