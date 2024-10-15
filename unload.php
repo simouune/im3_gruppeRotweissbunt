@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 if (isset($_GET['address'])) {
     $address = $_GET['address'];
 } else {
-    $address = 'Torstrasse 12';
+    $address = 'Avia Osterwalder, Burgstrasse 15, 9000 St.Gallen';
 }
 
 if (isset($_GET['start_time']) && isset($_GET['end_time'])) {
@@ -15,7 +15,7 @@ if (isset($_GET['start_time']) && isset($_GET['end_time'])) {
     $end_time = date('Y-m-d 23:59:59', strtotime($_GET['end_time']));
 } else {
     $start_time = '2024-10-11 00:00:00';
-    $end_time = '2024-10-14 23:59:59';
+    $end_time = date('Y-m-d 23:59:59');
 }
 
 try {

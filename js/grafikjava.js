@@ -4,13 +4,16 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   // Erfassen der Formulardaten
   const startDate = document.getElementById('start_date').value;
   const endDate = document.getElementById('end_date').value;
-  
 
   // Automatisch die Zeiten setzen
   const startTime = `${startDate}T00:00:00`;
   const endTime = `${endDate}T23:59:59`;
 
   // Senden der Daten an das PHP-Skript
+  fetchDataAndInsertToChart(startTime, endTime);
+});
+
+function fetchDataAndInsertToChart(startTime, endTime) {
   fetch(`unloadgraphic.php?start_time=${encodeURIComponent(startTime)}&end_time=${encodeURIComponent(endTime)}`, {
       method: 'GET'
   })
@@ -22,9 +25,7 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   .catch(error => {
       console.error('Error:', error);
   });
-
-});
-
+}
 
 /* Grafik Top 5 Adressen  ------------------------------------------------------------------------------------------------------*/
 
@@ -49,9 +50,6 @@ const topChart = new Chart(cty, {
     }
   });
 
-
-
-
 const AnotherapiURL = 'https://projekt.rotweissbunt.com/unload.php';
 
 function insertDataToChart(top5Results) {
@@ -72,6 +70,16 @@ function insertDataToChart(top5Results) {
 
     topChart.update();
 }
+
+// Default start and end times
+const defaultStartDate = '2024-10-11'; // Set your default start date here
+const defaultEndDate = new Date().toISOString().split('T')[0]; // Set default end date to today
+
+const defaultStartTime = `${defaultStartDate}T00:00:00`;
+const defaultEndTime = `${defaultEndDate}T23:59:59`;
+
+// Fetch and insert data with default times on page load
+fetchDataAndInsertToChart(defaultStartTime, defaultEndTime);
 
 fetch(AnotherapiURL)
     .then(response => response.json())
