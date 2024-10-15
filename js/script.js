@@ -79,3 +79,57 @@ fetch(apiURL)
         console.error('Error:', error);
     });
 
+//---------------------------------------------------------------------*/
+// STANDORTE LADESTATIONEN 
+//---------------------------------------------------------------------*/
+
+// Initialisieren der Karte und setzen der Ansicht auf eine bestimmte geografische Koordinate und Zoomstufe
+var map = L.map('map').setView([47.4245, 9.3767], 13); // Koordinaten für St. Gallen
+
+// Hinzufügen einer OpenStreetMap-Kachel-Layer zur Karte
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Funktion, um ein Popup oder Tooltip für jedes Feature hinzuzufügen und bei Klick zu zoomen
+function onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.address_street) {
+        layer.bindTooltip(feature.properties.address_street, {
+            permanent: false, // Tooltip wird nur beim Hover angezeigt
+            direction: 'top' // Tooltip wird oberhalb des Markers angezeigt
+        });
+    }
+
+    // Event-Listener für Klick auf den Marker
+    layer.on('click', function() {
+        map.setView(layer.getLatLng(), 17); // Zoomt auf den Marker und setzt die Zoomstufe auf 17
+    });
+}
+
+// Laden und Hinzufügen der GeoJSON-Datei zur Karte
+fetch('ladestationenStandorte.geojson')
+    .then(response => response.json())
+    .then(data => {
+        L.geoJSON(data, {
+            onEachFeature: onEachFeature
+        }).addTo(map);
+    })
+    .catch(error => console.error('Error loading the GeoJSON file:', error));
+
+// Event-Listener für das Dropdown-Menü
+document.getElementById('address').addEventListener('change', function() {
+  var selectedAddress = this.value;
+
+  // Koordinaten für die Adressen (Beispiel)
+  var addressCoordinates = {
+      'Burgstrasse 15, Avia Osterwalder': [47.4245, 9.3767],
+      'Bahnhofplatz 7': [47.4255, 9.3777],
+
+  };
+
+  // Überprüfen, ob die ausgewählte Adresse in den Koordinaten vorhanden ist
+  if (addressCoordinates[selectedAddress]) {
+      var coords = addressCoordinates[selectedAddress];
+      map.setView(coords, 17); // Zoomt auf die ausgewählte Adresse und setzt die Zoomstufe auf 17
+  }
+});

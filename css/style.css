@@ -192,6 +192,11 @@ button:active {
 /* JOURNALISM-SECTION */
 /*---------------------------------------------------------------------*/
 
+.journalismusSection {
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 250px;}
+
 .journalismusTextboxen {
     display: flex;
     flex-direction: row; /* Boxen nebeneinander */
