@@ -48,9 +48,9 @@
 <!-- Formular für Eingaben -------------------------------------------------------- -->
 <form id="dataForm"> 
     <br>
-<form id="dataForm">
-    <label for="address">Address:</label>
+    <label class="dropdownTitel" for="address">Adresse:</label>
     <select id="address" name="address" required>
+        <option value="bitte wählen...">bitte wählen...</option>
         <option value="Avia Osterwalder, Burgstrasse 15, 9000 St.Gallen">Burgstrasse 15, Avia Osterwalder</option>
         <option value="Bahnhofplatz 7">Bahnhofplatz 7</option>
         <option value="Bildweiherstrasse 9">Bildweiherstrasse 9</option>
@@ -98,13 +98,13 @@
         <option value="Zürcherstrasse 511">Zürcherstrasse 511</option>
     </select>
     <br>
-    <label for="start_date">Start Date:</label>
+    <label class="dropdownTitel" for="start_date">Startdatum:</label>
     <input type="date" id="start_date" name="start_date" required>
     <br>
-    <label for="end_date">End Date:</label>
+    <label class="dropdownTitel" for="end_date">Enddatum:</label>
     <input type="date" id="end_date" name="end_date" required>
     <br>
-    <button type="submit">Submit</button>
+    <button class="suchenButton" type="submit">Suche</button>
 </form>
 <!-- ------------------------------------------------------------------------------- -->
 
