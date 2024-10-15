@@ -6,7 +6,7 @@
     <title>Ladesäulen Projekt IM3</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="/js/script.js"></script>
+    <script defer src="js/script.js"></script>
 
     <!-- Font "Alegreya Sans SC" (for <h1>, <h2> and <h3>) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,12 +45,14 @@
 
     <section class="middleSection">
         <p class="middleSectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cum ducimus, alias quos esse est necessitatibus officiis? Repellendus ab nisi soluta laboriosam eius, ipsa doloribus at nulla quos, tempora provident.</p>
+
+
 <!-- Formular für Eingaben -------------------------------------------------------- -->
 <form id="dataForm"> 
     <br>
-    <label class="dropdownTitel" for="address">Adresse:</label>
+<form id="dataForm">
+    <label for="address">Address:</label>
     <select id="address" name="address" required>
-        <option value="bitte wählen...">bitte wählen...</option>
         <option value="Avia Osterwalder, Burgstrasse 15, 9000 St.Gallen">Burgstrasse 15, Avia Osterwalder</option>
         <option value="Bahnhofplatz 7">Bahnhofplatz 7</option>
         <option value="Bildweiherstrasse 9">Bildweiherstrasse 9</option>
@@ -98,13 +100,13 @@
         <option value="Zürcherstrasse 511">Zürcherstrasse 511</option>
     </select>
     <br>
-    <label class="dropdownTitel" for="start_date">Startdatum:</label>
+    <label for="start_date">Start Date:</label>
     <input type="date" id="start_date" name="start_date" required>
     <br>
-    <label class="dropdownTitel" for="end_date">Enddatum:</label>
+    <label for="end_date">End Date:</label>
     <input type="date" id="end_date" name="end_date" required>
     <br>
-    <button class="suchenButton" type="submit">Suche</button>
+    <button type="submit">Submit</button>
 </form>
 <!-- ------------------------------------------------------------------------------- -->
 
@@ -137,14 +139,14 @@
 
 <!-- GRAFIKTEIL -------------------------------------------------------------------------->
 
-<!-- <section class="graphicSection">
+<section class="graphicSection">
     <div>
         <canvas id="myChart"></canvas>
       </div>
       
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-</section> -->
+</section>
 
 <!-- ---------------------------------------------------------------------------------- -->
 
