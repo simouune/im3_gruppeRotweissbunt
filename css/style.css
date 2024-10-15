@@ -40,20 +40,39 @@ p {
 /* INTRO-SECTION */
 /*---------------------------------------------------------------------*/
 
-.intoSection{
+.intoSection {
     background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
     padding: 50px 250px;
+    position: relative; /* Positionierung für Pseudoelemente */
     overflow: hidden;
+}
+
+.intoSection::before {
+    content: "";
+    background-image: url("/images/ladesaeule.png");
+    background-size: contain; /* Passt das Bild an die Größe des Pseudo-Elements an */
+    background-repeat: no-repeat; 
+    background-position: right center; /* Positioniert das Bild rechts zentriert */
+    position: absolute; /* Positioniert das Pseudo-Element relativ zum Eltern-Element */
+    top: 0;
+    right: 0; /* Positioniert das Pseudo-Element rechts */
+    width: 100%; /* Passt die Breite des Pseudo-Elements an */
+    height: 100%; 
+    z-index: 1; /* Stellt sicher, dass das Pseudo-Element hinter dem Inhalt liegt */
 }
 
 .haupttitel {
     color: white;
     text-align: left;
+    position: relative;
+    z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
 }
 
 .einstiegsFakten {
     color: white;
     text-align: right;
+    position: relative;
+    z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
 }
 
 .faktTexthintergrund {
@@ -81,7 +100,7 @@ p {
     padding-right: 770px; /* Verschiebt den Text horizontal */
 }
 
-.einstiegsFakt3{
+.einstiegsFakt3 {
     background-image: url("/images/steckerWeissLangNeu.png");
     background-size: contain;
     background-position: right center;
@@ -89,7 +108,6 @@ p {
     margin-right: -550px; /* Verschiebt das Bild (Kabel) horizontal */
     padding-right: 750px; /* Verschiebt den Text horizontal */
 }
-
 
 
 /*---------------------------------------------------------------------*/
@@ -107,6 +125,14 @@ p {
     text-align: center;
 
 }
+
+/*---------------------*/
+/* Adressen-Dropdown */
+/*---------------------*/
+
+
+
+
 
 /*---------------------*/
 /* Button */
