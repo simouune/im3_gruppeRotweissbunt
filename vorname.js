@@ -1,4 +1,4 @@
-console.log('vorname.js');
+/* console.log('vorname.js');
 
 const apiURL = 'https://projekt.rotweissbunt.com/vorname_api.php';
 
@@ -37,4 +37,4 @@ fetch(apiURL)
     
         
 
-    })
+    }) */

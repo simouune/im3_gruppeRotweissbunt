@@ -46,6 +46,29 @@
     <section class="middleSection">
         <p class="middleSectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cum ducimus, alias quos esse est necessitatibus officiis? Repellendus ab nisi soluta laboriosam eius, ipsa doloribus at nulla quos, tempora provident.</p>
 
+ <!-- Formular für Eingaben -------------------------------------------------------- -->
+<form id="dataForm"> 
+    <br>
+    <label for="address">Address:</label>
+    <select id="address" name="address" required>
+        <option value="address1">Address 1</option>
+        <option value="Torstrasse 12">Torstrasse 12</option>
+        <option value="address3">Address 3</option>
+        <option value="address4">Address 4</option>
+    </select>
+    <br>
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" required>
+    <br>
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" required>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+<!-- ------------------------------------------------------------------------------- -->
+
+
+
         <div class="buttonsAlleZeitraeume">
             <button class="buttonText">Letzte 3 Tage</button>
             <button>Letzte 2 Wochen</button>
