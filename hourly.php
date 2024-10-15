@@ -10,9 +10,9 @@ if (isset($_GET['address'])) {
     $address = 'Torstrasse 12';
 }
 
-if (isset($_GET['start_time']) && isset($_GET['end_time'])) {
-    $start_time = date('Y-m-d 00:00:00', strtotime($_GET['start_time']));
-    $end_time = date('Y-m-d 23:59:59', strtotime($_GET['end_time']));
+if (isset($_GET['start_date']) && isset($_GET['end_date'])) {
+    $start_time = date('Y-m-d 00:00:00', strtotime($_GET['start_date']));
+    $end_time = date('Y-m-d 23:59:59', strtotime($_GET['end_date']));
 } else {
     $start_time = '2024-10-11 00:00:00';
     $end_time = '2024-10-14 23:59:59';
@@ -47,35 +47,23 @@ function countAvailableStations($stationListe) {
 
 $groupedStations = [];
 foreach ($stationListe as $station) {
-    $date = date('Y-m-d', strtotime($station['timestamp'])); // Group by full day
-    if (!isset($groupedStations[$date])) {
-        $groupedStations[$date] = [];
+    $hour = date('Y-m-d H:00:00', strtotime($station['timestamp'])); // Group by full hour
+    if (!isset($groupedStations[$hour])) {
+        $groupedStations[$hour] = [];
     }
-    $groupedStations[$date][] = $station;
+    $groupedStations[$hour][] = $station;
 }
 
-$weekdayNames = [
-    'Monday' => 'Montag',
-    'Tuesday' => 'Dienstag',
-    'Wednesday' => 'Mittwoch',
-    'Thursday' => 'Donnerstag',
-    'Friday' => 'Freitag',
-    'Saturday' => 'Samstag',
-    'Sunday' => 'Sonntag'
-];
-
 $result = [];
-foreach ($groupedStations as $day => $stations) {
+foreach ($groupedStations as $hour => $stations) {
     $availableCount = countAvailableStations($stations);
     $totalCount = count($stations);
     $unavailableCount = $totalCount - $availableCount;
     $auslastungsrate = ($totalCount > 0) ? ($unavailableCount / $totalCount) * 100 : 0;
-    $weekday = date('l', strtotime($day)); // Get the weekday
-    $weekdayGerman = $weekdayNames[$weekday]; // Translate to German
 
-    $result[$day] = [
+    $result[$hour] = [
         'address' => $address,
-        'weekday' => $weekdayGerman,
+        'hour' => $hour,
         'available_count' => $availableCount,
         'unavailable_count' => $unavailableCount,
         'allEntries' => $totalCount,

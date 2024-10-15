@@ -1,5 +1,3 @@
-const apiURL = 'https://projekt.rotweissbunt.com/unload.php';
-
 document.getElementById('dataForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Verhindert das Standardformular-Submit-Verhalten
 
@@ -17,14 +15,67 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
         method: 'GET'
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data); // Hier kannst du die Antwort des PHP-Skripts verarbeiten
+    .then(result => {
+        console.log(result); // Hier kannst du die Antwort des PHP-Skripts verarbeiten
+        updateChartWithData(result);
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
-    // You can now use startTime and endTime for your form submission logic
 });
 
+
+const ctx = document.getElementById('myChart');
+
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [], // Verwende die Werte aus dem wochentage Array
+      datasets: [{
+        label: 'Auslastungsrate',
+        data: [], // Hier kannst du die tatsächlichen Daten einsetzen
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+const apiURL = 'https://projekt.rotweissbunt.com/unload.php';
+
+
+
+function updateChartWithData(result) {
+    const wochentage = [];
+    const auslastungInProzent = [];
+    let label = "";
+
+    const werteArray = Object.values(result);
+    
+    werteArray.forEach(item => {
+        auslastungInProzent.push(item.auslastungsrate);
+        wochentage.push(item.weekday);
+        label = item.address;
+    });
+
+    chart.data.datasets[0].label = label;
+    chart.data.datasets[0].data = auslastungInProzent;
+    chart.data.labels = wochentage;
+
+    chart.update();
+}
+
+fetch(apiURL)
+    .then(response => response.json())
+    .then(updateChartWithData)
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
