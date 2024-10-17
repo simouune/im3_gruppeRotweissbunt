@@ -208,31 +208,288 @@ button:active {
 
 .journalismusTextboxen {
     display: flex;
-    flex-direction: row; /* Boxen nebeneinander */
-    justify-content: space-between; /* Platz zwischen den Boxen */
+    flex-direction: row; 
+    justify-content: space-between; 
     gap: 20px;
 }
 
 .journalismusTextboxLinks, .journalismusTextboxRechts {
-    flex: 1; /* Beide Boxen nehmen gleich viel Platz ein */
-    padding: 30px; /* Padding innerhalb der Boxen */
-    box-sizing: border-box; /* Padding wird in die Breite einbezogen */
+    flex: 1; 
+    padding: 30px; 
+    box-sizing: border-box; 
     background: var(--Background-Intro, linear-gradient(180deg, #001F32 0%, #000101 61%));
     color: white;
-    border-radius: 20px; 
-    position: relative; /* Positionierung für Pseudoelemente */
+    border-radius: 10px; 
+    position: relative; 
+    overflow: hidden;
 }
 
 .journalismusTextboxLinks::before {
     content: "";
-    background-image: url("/images/strichWeissLang.png");
-    background-size: contain; /* Passt das Bild an die Größe des Pseudo-Elements an */
+    background-image: url("/images/steckerWeissLang.png");
+    background-size: auto 6%; 
     background-repeat: no-repeat; 
-    background-position: bottom center; /* Positioniert das Bild rechts zentriert */
-    position: absolute; /* Positioniert das Pseudo-Element relativ zum Eltern-Element */
+    background-position: bottom right;
+    position: absolute; 
     top: 0;
-    right: 0; /* Positioniert das Pseudo-Element rechts */
-    width: 100%; /* Passt die Breite des Pseudo-Elements an */
-    height: 100%; 
-    z-index: 1; /* Stellt sicher, dass das Pseudo-Element hinter dem Inhalt liegt */
+    right: 0; 
+    width: 100%; 
+    height: calc(100% - 60px); 
+    z-index: 1; 
 }
+
+.journalismusTextboxRechts::before {
+    content: "";
+    background-image: url("/images/steckerWeissLang.png");
+    background-size: auto 6%;
+    background-attachment: fixed;
+    background-repeat: no-repeat; 
+    background-position: bottom left; 
+    margin-right: 80px;
+    position: absolute; 
+    top: 0;
+    right: 0; 
+    width: 100%; 
+    height: calc(100% - 60px); 
+    z-index: 1; 
+    transform: scaleX(-1);
+}
+
+/*---------------------------------------------------------------------*/
+/* MEDIA QUERIES: SMARTPHONE*/
+/*---------------------------------------------------------------------*/
+
+@media (max-width: 600px) {
+
+    /*----------------------------------------------*/
+    /* GRUNDEINSTELLUNGEN */
+    /*----------------------------------------------*/
+
+    h1 {
+        font-size: 65px;
+    }
+    
+    h2 {
+        font-size: 54px;
+    }  
+    
+    h3 {
+        font-size: 30px;
+    }
+    
+    p {
+        font-size: 13px;
+    }
+
+    /*----------------------------------------------*/
+    /* INTRO-SECTION */
+    /*----------------------------------------------*/
+
+    .intoSection {
+        background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
+        padding: 20px;
+        position: relative; /* Positionierung für Pseudoelemente */
+        overflow: hidden;
+    }
+    
+    .intoSection::before {
+        content: "";
+        background-image: url("/images/ladesaeule.png");
+        background-size: contain; /* Passt das Bild an die Größe des Pseudo-Elements an */
+        background-repeat: no-repeat; 
+        background-position: right center; /* Positioniert das Bild rechts zentriert */
+        position: absolute; /* Positioniert das Pseudo-Element relativ zum Eltern-Element */
+        top: 0;
+        right: 0; /* Positioniert das Pseudo-Element rechts */
+        width: 100%; /* Passt die Breite des Pseudo-Elements an */
+        height: 100%; 
+        z-index: 1; /* Stellt sicher, dass das Pseudo-Element hinter dem Inhalt liegt */
+    }
+    
+    .haupttitel {
+        color: white;
+        text-align: left;
+        position: relative;
+        z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
+    }
+    
+    .einstiegsFakten {
+        color: white;
+        text-align: right;
+        position: relative;
+        z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
+    }
+    
+    .faktTexthintergrund {
+        position: relative;
+        background-color: #001F32;
+        display: inline; 
+        padding: 0 5px;
+    }
+    
+    .einstiegsFakt1 {
+        background-image: url("/images/steckerWeissLangNeu.png");
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
+        margin-right: -670px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 770px; /* Verschiebt den Text horizontal */
+    }
+    
+    .einstiegsFakt2 {
+        background-image: url("/images/steckerWeissLangNeu.png");
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
+        margin-right: -770px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 770px; /* Verschiebt den Text horizontal */
+    }
+    
+    .einstiegsFakt3 {
+        background-image: url("/images/steckerWeissLangNeu.png");
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
+        margin-right: -550px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 750px; /* Verschiebt den Text horizontal */
+    }
+
+    /*----------------------------------------------*/
+    /* MIDDLE-SECTION */
+    /*----------------------------------------------*/
+
+    .middleSection {
+        justify-content: center;
+        gap: 20px;
+        padding: 50px 250px;
+    }
+
+    .middleSectionText{
+        padding: 20px 0px;
+        text-align: center;
+
+    }
+
+    /*---------------------*/
+    /* Adressen-Dropdown */
+    /*---------------------*/
+
+    #dataForm {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .dropdownTitel {
+        font-family: "Mulish", sans-serif;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+
+    #address {
+        font-family: "Mulish", sans-serif;
+        font-size: 18px; 
+        width: 270px; 
+        height: 40px;
+        padding: 0px 10px;
+        border: 1px solid #ccc; 
+        border-radius: 3px;
+    }
+
+    #start_date, #end_date {
+        font-family: "Mulish", sans-serif; 
+        font-size: 18px; 
+        height: 40px; 
+        width: 135px;
+        padding: 0px 10px;
+        border: 1px solid #ccc; 
+        border-radius: 3px; 
+    }
+
+    button {
+        font-family: "Mulish", sans-serif;
+        font-size: 18px;
+        width: 120px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border: 1px solid #ccc; 
+        border-radius: 3px; 
+    }
+
+    button:hover {
+        background-color: #e1e1e1; 
+    }
+
+    button:active {
+        transform: scale(0.97); 
+    }
+
+
+    /*----------------------------------------------*/
+    /* JOURNALISM-SECTION */
+    /*----------------------------------------------*/
+
+    .journalismusSection {
+        justify-content: center;
+        gap: 20px;
+        padding: 50px 250px;}
+
+    .journalismusTextboxen {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between; 
+        gap: 20px;
+    }
+
+    .journalismusTextboxLinks, .journalismusTextboxRechts {
+        flex: 1; 
+        padding: 30px; 
+        box-sizing: border-box; 
+        background: var(--Background-Intro, linear-gradient(180deg, #001F32 0%, #000101 61%));
+        color: white;
+        border-radius: 10px; 
+        position: relative; 
+        overflow: hidden;
+    }
+
+    .journalismusTextboxLinks::before {
+        content: "";
+        background-image: url("/images/steckerWeissLang.png");
+        background-size: auto 6%; 
+        background-repeat: no-repeat; 
+        background-position: bottom right;
+        position: absolute; 
+        top: 0;
+        right: 0; 
+        width: 100%; 
+        height: calc(100% - 60px); 
+        z-index: 1; 
+    }
+
+    .journalismusTextboxRechts::before {
+        content: "";
+        background-image: url("/images/steckerWeissLang.png");
+        background-size: auto 6%;
+        background-attachment: fixed;
+        background-repeat: no-repeat; 
+        background-position: bottom left; 
+        margin-right: 80px;
+        position: absolute; 
+        top: 0;
+        right: 0; 
+        width: 100%; 
+        height: calc(100% - 60px); 
+        z-index: 1; 
+        transform: scaleX(-1);
+    }
+
+
+
+}
+
+

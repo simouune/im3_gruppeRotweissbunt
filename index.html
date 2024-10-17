@@ -37,7 +37,7 @@
             </p>
             <p class="einstiegsFakt2">
                 <span class="faktTexthintergrund">
-                    33 Schnelllader
+                    Aktuell <span id="freeRate"></span> frei
                 </span>
             </p>
             <p class="einstiegsFakt3">
@@ -53,32 +53,30 @@
 
         <p class="middleSectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cum ducimus, alias quos esse est necessitatibus officiis? Repellendus ab nisi soluta laboriosam eius, ipsa doloribus at nulla quos, tempora provident.</p>
 
-     <form class="dropdownTitel" id="dataForm">
-        <label class="dropdownTitel" for="start_date">Startdatum:</label>
-        <input type="date" id="start_date" name="start_date" value="2024-10-11">
-        <br>
-        <label class="dropdownTitel" for="end_date">Enddatum:</label>
-        <input type="date" id="end_date" name="end_date" value="">
-        <br>
-        <button type="submit">Suche</button>
-     </form>
+        <form class="dropdownTitel" id="dataForm">
+            <label class="dropdownTitel" for="start_date">Startdatum:</label>
+            <input type="date" id="start_date" name="start_date" value="2024-10-11">
+            <br>
+            <label class="dropdownTitel" for="end_date">Enddatum:</label>
+            <input type="date" id="end_date" name="end_date" value="">
+            <br>
+            <button type="submit">Suche</button>
+        </form>
 
 
-<!-- GRAFIK 1 (Top 5 ausgelasteten Standorte) ------------------------------------------------------->
+        <!-- GRAFIK 1 (Top 5 ausgelasteten Standorte) ------------------------------------------------------->
 
-<section class="graphicSection">
-    <div>
-        <canvas id="top5Chart"></canvas>
-      </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-</section>
-
-<!-- --------------------------------------------------------------------------------------------- -->
-        
+        <section class="graphicSection">
+            <div>
+                <canvas id="top5Chart"></canvas>
+            </div>
             
-<!-- Formular für Eingaben -------------------------------------------------------- -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        </section>
+      
+            
+        <!-- Formular für Eingaben -------------------------------------------------------- -->
 
         <form class="dropdownTitel" id="dataDropdown">
             <label for="address">Adresse:</label>
@@ -134,9 +132,7 @@
         </form>
 
 
-
-
-<!-- Auslastung per Tag pro Adresse -------------------------------------------------------- -->
+        <!-- Auslastung per Tag pro Adresse -------------------------------------------------------- -->
 
         <section class="graphicSection">
             <div>
@@ -147,11 +143,14 @@
 
         </section>
 
+
+        <div id="map" style="width: 100%; height: 500px; border-radius: 10px;"></div>
+
+
     </section>
 
 <!-- ---------------------------------------------------------------------------------- -->
 
-<div id="map" style="width: 100%; height: 400px;"></div>
 
     <section class="journalismusSection">
         <h2>Das bedeutet konkret</h2>
