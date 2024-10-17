@@ -126,7 +126,6 @@ p {
     text-align: center;
 
 }
-  
 
 /*--------------------------------------*/
 /* Adressen-Dropdown und Datumseingabe */
@@ -376,18 +375,19 @@ button:active {
     /* Adressen-Dropdown und Datumseingabe */
     /*------------------------------------*/
 
+    /* Grid-Container für das Formular */
     #dataForm {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
         margin-top: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
-
-    #data Form label, #dataForm input {
+    
+    #dataForm label, #dataForm input {
         grid-column: span 1; /* Jedes Label und Input nimmt eine Spalte ein */
     }
-
+    
     #dataForm button {
         grid-column: span 2; /* Button über beide Spalten spannen */
         justify-self: center; /* Button zentrieren */
@@ -397,13 +397,13 @@ button:active {
         display: flex;
         justify-content: center;
         gap: 15px;
-        margin-top: 70px;
-        margin-bottom: 30px;
+        margin-top: 45px;
+        margin-bottom: 35px;
     }
 
     .dropdownTitel {
         font-family: "Mulish", sans-serif;
-        font-size: 18px;
+        font-size: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -411,7 +411,7 @@ button:active {
 
     #address {
         font-family: "Mulish", sans-serif;
-        font-size: 18px; 
+        font-size: 15px; 
         width: 270px; 
         height: 40px;
         padding: 0px 10px;
@@ -421,7 +421,7 @@ button:active {
 
     #start_date, #end_date {
         font-family: "Mulish", sans-serif; 
-        font-size: 18px; 
+        font-size: 15px; 
         height: 40px; 
         width: 135px;
         padding: 0px 10px;
@@ -431,7 +431,7 @@ button:active {
 
     button {
         font-family: "Mulish", sans-serif;
-        font-size: 18px;
+        font-size: 15px;
         display: flex;
         width: 120px;
         height: 40px;
@@ -451,6 +451,10 @@ button:active {
         transform: scale(0.97); 
     }
 
+    #map{
+        margin-top: 25px;
+        height: 200px;
+    }
 
     /*---------------------------------------------------------------------*/
     /* JOURNALISM-SECTION */
