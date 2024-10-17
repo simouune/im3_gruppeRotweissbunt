@@ -37,35 +37,80 @@ const topChart = new Chart(cty, {
     data: {
       labels: [], // Verwende die Werte aus dem wochentage Array
       datasets: [{
-        label:'',
+        label: 'Mein Datensatz',
         data: [], // Hier kannst du die tatsächlichen Daten einsetzen
         backgroundColor: ['#001928', '#092F46', '#174764', '#225D81', '#286991'],
         borderWidth: 1,
         borderRadius: 3,
         borderColor: ['#001928', '#092F46', '#174764', '#225D81', '#286991'],
         hoverBackgroundColor: '#89A0AE', // Highlight color on hover
-
       }]
     },
     options: {
       maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 15,            // Legendentext-Schriftgröße
+            },
+            generateLabels: function(chart) {
+              return chart.data.datasets.map(function(dataset, i) {
+                return {
+                  text: dataset.label,
+                  fillStyle: 'rgb(247, 252, 255)',  // Farbe des Punktes 
+                  strokeStyle: 'rgb(247, 252, 255)',// Punktumrandung
+                  pointStyle: 'circle',              // Setzt den Punktstil
+                  hidden: false,
+                };
+              });
+            }
+          },
+          onClick: function(e, legendItem) {
+            // Überschreibe das Klickverhalten, sodass nichts passiert
+          }
+        },
+        tooltip: {
+          enabled: true,         // Aktiviert Tooltips
+          backgroundColor: '#327EC6',  // Hintergrundfarbe des Tooltips
+          titleColor: '#FFFFFF',       // Farbe des Titels im Tooltip
+          bodyColor: '#FFFFFF',        // Textfarbe des Tooltip-Inhalts
+          displayColors: false,        // Entfernt die Farbboxen im Tooltip
+          callbacks: {
+            label: function(context) {
+              // Hier kannst du den Text anpassen, der für die Daten angezeigt wird
+              let label = "Auslastung im ausgewählten Zeitraum: ";
+
+              // Anpassung des angezeigten Datenwerts (z. B. formatiert)
+              label += context.raw + ' %'; // Text mit Werten und Einheit
+              return label;
+            },
+            title: function(context) {
+              // Anpassung des Titels (z. B. der Kategorie/Wochentag)
+              return 'Ort: ' + context[0].label;
+            }
+          }
+        }
+      },  
       scales: {
         x: {
           grid: {
             color: 'rgb(247, 252, 255)',
           },
-          ticks:{
+          ticks: {
             color: '#001F32',
             font: {
               size: 15,
-          },
-          }},
+            },
+          }
+        },
         y: {
           beginAtZero: true,
-          ticks:{
+          ticks: {
             color: '#001F32',
             font: {
               size: 14,
+            }
           },
           grid: {
             color: '#D9E4EC',
@@ -73,14 +118,16 @@ const topChart = new Chart(cty, {
         }
       }
     }
-  }});
+});
+
+
 
 const AnotherapiURL = 'https://projekt.rotweissbunt.com/unload.php';
 
 function insertDataToChart(top5Results) {
     const address = [];
     const auslastungInProzent = [];
-    let label = "Ladestationen mit der höchsten Auslastung im ausgewählten Zeitraum";
+    let label = "Ladestationen mit der höchsten prozentualen Auslastung im ausgewählten Zeitraum";
 
     const werteArray = Object.values(top5Results);
     

@@ -47,39 +47,139 @@ const chart = new Chart(ctx, {
       datasets: [{
         label: 'Auslastungsrate',
         data: [], // Hier kannst du die tatsächlichen Daten einsetzen
-        borderWidth: 1
+        borderColor: '#023859',  // Farbe der Linie
+        backgroundColor: '#023859', // Farbe der Datenpunkte
+        borderWidth: 2,  // Dicke der Linie
+        pointRadius: 4,  // Größe der Datenpunkte
+        pointBackgroundColor: '#327EC6', // Farbe der Datenpunkte
+        pointBorderColor: '#023859',     // Rahmenfarbe der Datenpunkte
+        tension: 0,  // Optionale Spannung, um die Linie weich zu zeichnen
       }]
     },
     options: {
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 15,  // Legendentext-Schriftgröße
+            },
+            generateLabels: function(chart) {
+                return chart.data.datasets.map(function(dataset, i) {
+                  return {
+                    text: dataset.label,
+                    fillStyle: 'rgb(247, 252, 255)',  // Farbe des Punktes 
+                    strokeStyle: 'rgb(247, 252, 255)',// Punktumrandung
+                    pointStyle: 'circle',              // Setzt den Punktstil
+                    hidden: false,
+                  };
+                });
+              }
+          }
+        },
+        tooltip: {
+            enabled: true,         // Aktiviert Tooltips
+            backgroundColor: '#327EC6',  // Hintergrundfarbe des Tooltips
+            titleColor: '#FFFFFF',       // Farbe des Titels im Tooltip
+            bodyColor: '#FFFFFF',        // Textfarbe des Tooltip-Inhalts
+            displayColors: false,        // Entfernt die Farbboxen im Tooltip
+            callbacks: {
+              label: function(context) {
+                // Hier kannst du den Text anpassen, der für die Daten angezeigt wird
+                let label = "Auslastung an diesem Tag: ";
+  
+                // Anpassung des angezeigten Datenwerts (z. B. formatiert)
+                label += context.raw + ' %'; // Text mit Werten und Einheit
+                return label;
+              },
+              title: function(context) {
+                // Anpassung des Titels (z. B. der Kategorie/Wochentag)
+                return '' + context[0].label;
+              }
+            }
+          },
+      },
       scales: {
+        x: {
+          grid: {
+            color: 'rgb(247, 252, 255)',  // Gitterfarbe für die X-Achse
+          },
+          ticks: {
+            color: '#001F32',  // Farbe der X-Achsen-Beschriftungen
+            font: {
+              size: 15,  // Schriftgröße der X-Achsen-Beschriftungen
+            },
+          }
+        },
         y: {
-          beginAtZero: true
+          beginAtZero: true,  // Beginnt bei Null auf der Y-Achse
+          grid: {
+            color: '#D9E4EC',  // Gitterfarbe für die Y-Achse
+          },
+          ticks: {
+            color: '#001F32',  // Farbe der Y-Achsen-Beschriftungen
+            font: {
+              size: 14,  // Schriftgröße der Y-Achsen-Beschriftungen
+            },
+          }
         }
       }
     }
-  });
+});
+
 
 
 
 function updateChartWithData(result) {
     const wochentage = [];
+    const tooltipDates = [];
     const auslastungInProzent = [];
     let label = "";
-
+    
+    // Hole das Startdatum aus dem Formular
+    const startDate = document.getElementById('start_date').value || '2024-10-11'; 
+    let currentDate = new Date(startDate); // Beginn mit dem Startdatum
+    
     const werteArray = Object.values(result);
     
     werteArray.forEach(item => {
+        // Format für die X-Achse (nur Wochentag)
+        const optionsShort = { weekday: 'short' };
+        const formattedWeekday = currentDate.toLocaleDateString('de-DE', { weekday: 'long' }); // Ganzer Wochentag für X-Achse
+        
+        // Format für den Tooltip (komplettes Datum)
+        const optionsFull = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        const formattedDate = currentDate.toLocaleDateString('de-DE', optionsFull); // Volles Datum für Tooltip
+        
         auslastungInProzent.push(item.auslastungsrate);
-        wochentage.push(item.weekday);
-        label = item.address;
+        wochentage.push(formattedWeekday); // Nur Wochentag für X-Achse
+        tooltipDates.push(formattedDate);  // Volles Datum für Tooltip
+        
+        label = item.address; // Setze die Adresse als Label für die Datenreihe
+        
+        // Nächsten Tag hinzufügen
+        currentDate.setDate(currentDate.getDate() + 1);
     });
 
+    // Aktualisiere die Chart-Daten
     chart.data.datasets[0].label = label;
     chart.data.datasets[0].data = auslastungInProzent;
     chart.data.labels = wochentage;
 
-    chart.update();
+    // Custom Tooltip
+    chart.options.plugins.tooltip.callbacks.label = function(context) {
+        let label = "Auslastung an diesem Tag: " + context.raw + ' %'; // Text mit Werten und Einheit
+        return label;
+    };
+    chart.options.plugins.tooltip.callbacks.title = function(context) {
+        // Zeige volles Datum im Tooltip
+        return tooltipDates[context[0].dataIndex]; // Index aus Tooltipdaten holen
+    };
+
+    chart.update(); // Aktualisiere das Diagramm
 }
+
+
 
 document.getElementById('end_date').value = new Date().toISOString().split('T')[0];
 
