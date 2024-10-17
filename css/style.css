@@ -43,7 +43,7 @@ p {
 
 .intoSection {
     background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
-    padding: 50px 250px;
+    padding: 50px 250px ;
     position: relative; /* Positionierung für Pseudoelemente */
     overflow: hidden;
 }
@@ -132,9 +132,9 @@ p {
 }
   
 
-/*--------------------------------------*/
+/*------------------------*/
 /* Adressen-Dropdown und Datumseingabe */
-/*------------------------------------*/
+/*------------------------*/
 
 #dataForm {
     display: flex;
@@ -199,6 +199,12 @@ button:hover {
 
 button:active {
     transform: scale(0.97); 
+}
+#map{
+    margin-top: 25px;
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 
@@ -275,11 +281,11 @@ button:active {
     }
     
     h2 {
-        font-size: 54px;
+        font-size: 40px;
     }  
     
     h3 {
-        font-size: 30px;
+        font-size: 24px;
     }
     
     p {
@@ -292,71 +298,33 @@ button:active {
 
     .intoSection {
         background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
-        padding: 30px;
-        position: relative; /* Positionierung für Pseudoelemente */
-        overflow: hidden;
+        padding: 20px;
+        position: relative; 
         height: 800px;
     }
     
     .intoSection::before {
-        content: "";
-        background-image: url("/images/ladesaeule.png");
-        background-size: contain; /* Passt das Bild an die Größe des Pseudo-Elements an */
-        background-repeat: no-repeat; 
-        background-position: right center; /* Positioniert das Bild rechts zentriert */
-        position: absolute; /* Positioniert das Pseudo-Element relativ zum Eltern-Element */
         top: -30%;
-        right: -34%; /* Positioniert das Pseudo-Element rechts */
-        width: 150%; /* Passt die Breite des Pseudo-Elements an */
+        right: -34%; 
+        width: 150%; 
         height: 150%; 
-        z-index: 1; /* Stellt sicher, dass das Pseudo-Element hinter dem Inhalt liegt */
     }
 
     .haupttitel {
-        color: white;
         padding-top: 290px;
-        text-align: left;
-        position: relative;
-        z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
     }
-    
-    .einstiegsFakten {
-        color: white;
-        text-align: right;
-        position: relative;
-        z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
-    }
-    
-    .faktTexthintergrund {
-        position: relative;
-        background-color: #001F32;
-        display: inline; 
-        padding: 0 5px;
-    }
-    
+
     .einstiegsFakt1 {
-        background-image: url("/images/steckerWeissLangNeu.png");
-        background-size: contain;
-        background-position: right center;
-        background-repeat: no-repeat;
         margin-right: -620px; /* Verschiebt das Bild (Kabel) horizontal */
         padding-right: 690px; /* Verschiebt den Text horizontal */
     }
     
     .einstiegsFakt2 {
-        background-image: url("/images/steckerWeissLangNeu.png");
-        background-size: contain;
-        background-position: right center;
-        background-repeat: no-repeat;
         margin-right: -690px; /* Verschiebt das Bild (Kabel) horizontal */
         padding-right: 690px; /* Verschiebt den Text horizontal */
     }
     
     .einstiegsFakt3 {
-        background-image: url("/images/steckerWeissLangNeu.png");
-        background-size: contain;
-        background-position: right center;
-        background-repeat: no-repeat;
         margin-right: -520px; /* Verschiebt das Bild (Kabel) horizontal */
         padding-right: 590px; /* Verschiebt den Text horizontal */
     }
@@ -367,98 +335,166 @@ button:active {
 
         
     .middleSection {
-        justify-content: center;
-        gap: 20px;
-        padding: 30px;
+        padding: 20px;
         }
 
     .middleSectionText{
-        text-align: center;
+        padding-bottom: 25px;
     }
 
-    /*--------------------------------------*/
+    /*------------------------*/
     /* Adressen-Dropdown und Datumseingabe */
-    /*------------------------------------*/
+    /*------------------------*/
 
-    /* Grid-Container für das Formular */
     #dataForm {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-top: 20px;
-        margin-bottom: 25px;
     }
     
     #dataForm label, #dataForm input {
-        grid-column: span 1; /* Jedes Label und Input nimmt eine Spalte ein */
+        grid-column: span 1;
     }
     
     #dataForm button {
-        grid-column: span 2; /* Button über beide Spalten spannen */
-        justify-self: center; /* Button zentrieren */
+        grid-column: span 2;
+        justify-self: center; 
     }
 
     #dataDropdown {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
         margin-top: 45px;
         margin-bottom: 35px;
     }
 
     .dropdownTitel {
-        font-family: "Mulish", sans-serif;
         font-size: 15px;
-        display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     #address {
-        font-family: "Mulish", sans-serif;
         font-size: 15px; 
-        width: 270px; 
-        height: 40px;
-        padding: 0px 10px;
-        border: 1px solid #ccc; 
-        border-radius: 3px;
     }
 
     #start_date, #end_date {
-        font-family: "Mulish", sans-serif; 
         font-size: 15px; 
-        height: 40px; 
-        width: 135px;
-        padding: 0px 10px;
-        border: 1px solid #ccc; 
-        border-radius: 3px; 
+        height: 35px; 
+        width: 130px;
     }
 
     button {
-        font-family: "Mulish", sans-serif;
         font-size: 15px;
-        display: flex;
-        width: 120px;
-        height: 40px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        border: 1px solid #ccc; 
-        border-radius: 3px; 
-    }
-
-    button:hover {
-        background-color: #e1e1e1; 
-    }
-
-    button:active {
-        transform: scale(0.97); 
+        height: 35px;
     }
 
     #map{
-        margin-top: 25px;
-        height: 200px;
+        height: 250px;
+    }    
+
+    /*---------------------------------------------------------------------*/
+    /* JOURNALISM-SECTION */
+    /*---------------------------------------------------------------------*/
+
+    .journalismusSection {
+        padding: 20px;
+    }
+
+    .journalismusTextboxen {
+        flex-direction: column; 
+    }
+
+    .journalismusTextboxLinks::before {
+        background-size: auto 4%; 
+    }
+
+    .journalismusTextboxRechts::before {
+        background-size: auto 4%;
+    }
+
+
+}
+
+
+/*---------------------------------------------------------------------*/
+/* MEDIA QUERIES: TABLET*/
+/*---------------------------------------------------------------------*/
+
+@media (min-width: 600px) and (max-width: 1000px) {
+
+    /*----------------------------------------------*/
+    /* GRUNDEINSTELLUNGEN */
+    /*----------------------------------------------*/
+
+    h1 {
+        font-size: 55px;
+    }
+    
+    h2 {
+        font-size: 40px;
+    }  
+    
+    h3 {
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 18px;
+    }
+
+    /*----------------------------------------------*/
+    /* INTRO-SECTION */
+    /*----------------------------------------------*/
+
+    .intoSection {
+        padding: 50px 70px;
+    }
+
+    .einstiegsFakt1 {
+        margin-right: -620px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 690px; /* Verschiebt den Text horizontal */
+    }
+    
+    .einstiegsFakt2 {
+        margin-right: -690px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 690px; /* Verschiebt den Text horizontal */
+    }
+    
+    .einstiegsFakt3 {
+        margin-right: -520px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 590px; /* Verschiebt den Text horizontal */
+    }
+
+
+    /*----------------------------------------------*/
+    /* MIDDLE-SECTION */
+    /*----------------------------------------------*/
+
+        
+    .middleSection {
+        padding: 70px;
+        }
+
+    .middleSectionText{
+        padding-bottom: 25px;
+    }
+
+    .dropdownTitel {
+        font-size: 18px;
+    }
+
+    #address {
+        font-size: 18px; 
+    }
+
+    #start_date, #end_date {
+        font-size: 18px; 
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    #map{
+        height: 350px;
     }
 
     /*---------------------------------------------------------------------*/
@@ -466,61 +502,6 @@ button:active {
     /*---------------------------------------------------------------------*/
 
     .journalismusSection {
-        justify-content: center;
-        gap: 20px;
-        padding: 0px;
+        padding: 20px 70px;
     }
-
-    .journalismusTextboxen {
-        display: flex;
-        flex-direction: row; 
-        justify-content: space-between; 
-        gap: 20px;
-    }
-
-    .journalismusTextboxLinks, .journalismusTextboxRechts {
-        flex: 1; 
-        padding: 30px; 
-        box-sizing: border-box; 
-        background: var(--Background-Intro, linear-gradient(180deg, #001F32 0%, #000101 61%));
-        color: white;
-        border-radius: 10px; 
-        position: relative; 
-        overflow: hidden;
-    }
-
-    .journalismusTextboxLinks::before {
-        content: "";
-        background-image: url("/images/steckerWeissLang.png");
-        background-size: auto 6%; 
-        background-repeat: no-repeat; 
-        background-position: bottom right;
-        position: absolute; 
-        top: 0;
-        right: 0; 
-        width: 100%; 
-        height: calc(100% - 60px); 
-        z-index: 1; 
-    }
-
-    .journalismusTextboxRechts::before {
-        content: "";
-        background-image: url("/images/steckerWeissLang.png");
-        background-size: auto 6%;
-        background-attachment: fixed;
-        background-repeat: no-repeat; 
-        background-position: bottom left; 
-        margin-right: 80px;
-        position: absolute; 
-        top: 0;
-        right: 0; 
-        width: 100%; 
-        height: calc(100% - 60px); 
-        z-index: 1; 
-        transform: scaleX(-1);
-    }
-
-
 }
-
-
