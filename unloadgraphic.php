@@ -43,10 +43,13 @@ function groupStationsByAddress($listOfStations) {
 
 function calculateAuslastungsrate($stations) {
     $availableCount = 0;
-    $totalCount = count($stations);
+    $totalCount = 0;
     foreach ($stations as $station) {
-        if ($station['status'] === 'Available') {
-            $availableCount++;
+        if ($station['status'] !== 'OutOfService' && $station['status'] !== 'Unknown') {
+            $totalCount++;
+            if ($station['status'] === 'Available') {
+                $availableCount++;
+            }
         }
     }
     $unavailableCount = $totalCount - $availableCount;

@@ -45,6 +45,12 @@ function countAvailableStations($stationListe) {
     return $count;
 }
 
+function filterStations($stationListe) {
+    return array_filter($stationListe, function($station) {
+        return !in_array($station['status'], ['OutOfService', 'Unknown']);
+    });
+}
+
 $groupedStations = [];
 foreach ($stationListe as $station) {
     $date = date('Y-m-d', strtotime($station['timestamp'])); // Group by full day
@@ -66,8 +72,9 @@ $weekdayNames = [
 
 $result = [];
 foreach ($groupedStations as $day => $stations) {
-    $availableCount = countAvailableStations($stations);
-    $totalCount = count($stations);
+    $filteredStations = filterStations($stations);
+    $availableCount = countAvailableStations($filteredStations);
+    $totalCount = count($filteredStations);
     $unavailableCount = $totalCount - $availableCount;
     $auslastungsrate = ($totalCount > 0) ? ($unavailableCount / $totalCount) * 100 : 0;
     $weekday = date('l', strtotime($day)); // Get the weekday
