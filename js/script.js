@@ -1,29 +1,41 @@
 document.getElementById('dataForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Verhindert das Standardformular-Submit-Verhalten
 
-    // Erfassen der Formulardaten
-    const startDate = document.getElementById('start_date').value;
-    const endDate = document.getElementById('end_date').value;
+    // Fetch and update chart data
+    fetchAndUpdateChartData();
+
+});
+
+document.getElementById('dataDropdown').addEventListener('change', function() {
+    // Fetch and update chart data
+    fetchAndUpdateChartData();
+});
+
+function fetchAndUpdateChartData() {
+
+    // Capture form data
+    const startDate = document.getElementById('start_date').value || '2024-10-11';
+    const endDate = document.getElementById('end_date').value || new Date().toISOString().split('T')[0];
     const address = document.getElementById('address').value;
 
-    // Automatisch die Zeiten setzen
+    // Automatically set the times
     const startTime = `${startDate}T00:00:00`;
     const endTime = `${endDate}T23:59:59`;
 
-    // Senden der Daten an das PHP-Skript
+    // Send data to the PHP script
     fetch(`unload.php?start_time=${encodeURIComponent(startTime)}&end_time=${encodeURIComponent(endTime)}&address=${encodeURIComponent(address)}`, {
         method: 'GET'
     })
     .then(response => response.json())
     .then(result => {
-        console.log(result); // Hier kannst du die Antwort des PHP-Skripts verarbeiten
+        console.log(result); // Process the PHP script response
         updateChartWithData(result);
     })
     .catch(error => {
         console.error('Error:', error);
     });
+}
 
-});
 
 /* Grafik Auslastung per Tag  ----------------------------------------------------*/
 const ctx = document.getElementById('myChart');
@@ -48,10 +60,7 @@ const chart = new Chart(ctx, {
   });
 
 
-const apiURL = 'https://projekt.rotweissbunt.com/unload.php';
-
-
-
+  
 function updateChartWithData(result) {
     const wochentage = [];
     const auslastungInProzent = [];
@@ -72,12 +81,19 @@ function updateChartWithData(result) {
     chart.update();
 }
 
+document.getElementById('end_date').value = new Date().toISOString().split('T')[0];
+
+const apiURL = 'https://projekt.rotweissbunt.com/unload.php';
+
 fetch(apiURL)
     .then(response => response.json())
     .then(updateChartWithData)
     .catch(error => {
         console.error('Error:', error);
     });
+
+
+
 
 //---------------------------------------------------------------------*/
 // STANDORTE LADESTATIONEN 

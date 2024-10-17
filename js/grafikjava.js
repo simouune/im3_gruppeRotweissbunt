@@ -2,8 +2,8 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Verhindert das Standardformular-Submit-Verhalten
 
   // Erfassen der Formulardaten
-  const startDate = document.getElementById('start_date').value;
-  const endDate = document.getElementById('end_date').value;
+  const startDate = document.getElementById('start_date').value || '2024-10-11';
+    const endDate = document.getElementById('end_date').value || new Date().toISOString().split('T')[0];
 
   // Automatisch die Zeiten setzen
   const startTime = `${startDate}T00:00:00`;
@@ -12,6 +12,7 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
   // Senden der Daten an das PHP-Skript
   fetchDataAndInsertToChart(startTime, endTime);
 });
+
 
 function fetchDataAndInsertToChart(startTime, endTime) {
   fetch(`unloadgraphic.php?start_time=${encodeURIComponent(startTime)}&end_time=${encodeURIComponent(endTime)}`, {
@@ -38,24 +39,48 @@ const topChart = new Chart(cty, {
       datasets: [{
         label:'',
         data: [], // Hier kannst du die tatsächlichen Daten einsetzen
-        borderWidth: 1
+        backgroundColor: ['#001928', '#092F46', '#174764', '#225D81', '#286991'],
+        borderWidth: 1,
+        borderRadius: 3,
+        borderColor: ['#001928', '#092F46', '#174764', '#225D81', '#286991'],
+        hoverBackgroundColor: '#89A0AE', // Highlight color on hover
+
       }]
     },
     options: {
+      maintainAspectRatio: true,
       scales: {
+        x: {
+          grid: {
+            color: 'rgb(247, 252, 255)',
+          },
+          ticks:{
+            color: '#001F32',
+            font: {
+              size: 15,
+          },
+          }},
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          ticks:{
+            color: '#001F32',
+            font: {
+              size: 14,
+          },
+          grid: {
+            color: '#D9E4EC',
+          }
         }
       }
     }
-  });
+  }});
 
 const AnotherapiURL = 'https://projekt.rotweissbunt.com/unload.php';
 
 function insertDataToChart(top5Results) {
     const address = [];
     const auslastungInProzent = [];
-    let label = "Die 5 beliebtesten Adressen";
+    let label = "Ladestationen mit der höchsten Auslastung im ausgewählten Zeitraum";
 
     const werteArray = Object.values(top5Results);
     

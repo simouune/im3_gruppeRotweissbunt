@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background-color: rgb(247, 252, 255);
 }
 
 h1 {
@@ -126,15 +127,23 @@ p {
 
 }
 
-/*---------------------*/
-/* Adressen-Dropdown */
-/*---------------------*/
+/*--------------------------------------*/
+/* Adressen-Dropdown und Datumseingabe */
+/*------------------------------------*/
 
 #dataForm {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#dataDropdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 70px;
     margin-bottom: 30px;
 }
 
