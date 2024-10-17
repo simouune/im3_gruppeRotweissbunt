@@ -118,14 +118,19 @@ p {
 .middleSection {
     justify-content: center;
     gap: 20px;
-    padding: 50px 250px;
+    padding: 10px 250px;
 }
 
 .middleSectionText{
-    padding: 20px 0px;
+    padding-bottom: 50px;
     text-align: center;
 
 }
+
+.graphicSectionTwo{
+    margin-bottom: 40px;
+}
+  
 
 /*--------------------------------------*/
 /* Adressen-Dropdown und Datumseingabe */
@@ -204,7 +209,7 @@ button:active {
 .journalismusSection {
     justify-content: center;
     gap: 20px;
-    padding: 50px 250px;}
+    padding: 35px 250px;}
 
 .journalismusTextboxen {
     display: flex;

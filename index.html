@@ -51,7 +51,7 @@
 
     <section class="middleSection">
 
-        <p class="middleSectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cum ducimus, alias quos esse est necessitatibus officiis? Repellendus ab nisi soluta laboriosam eius, ipsa doloribus at nulla quos, tempora provident.</p>
+        <p class="middleSectionText"> Die folgenden Grafiken geben Aufschluss über die Auslastung und Nutzung des Ladenetzes in der Stadt St. Gallen. Mit der Auswertung dieser Daten kann eine Optimierung des Ladenetzes vorgenommen werden. Hoch frequentierte Ladeorte können ausgebaut- überflüssige Stationen verlagert werden. Es können ausserdem Aussagen über das Ladeverhalten von E-Auto Nutzern an bestimmten Wochentagen getroffen werden.</p>
 
         <form class="dropdownTitel" id="dataForm">
             <label class="dropdownTitel" for="start_date">Startdatum:</label>
@@ -62,19 +62,19 @@
         </form>
 
 
-        <!-- GRAFIK 1 (Top 5 ausgelasteten Standorte) ------------------------------------------------------->
+<!-- GRAFIK 1 (Top 5 ausgelasteten Standorte) ------------------------------------------------------->
 
-        <section class="graphicSection">
-            <div id="xyz">
+        <section class="graphicSectionOne">
+            <div>
                 <canvas id="top5Chart"></canvas>
             </div>
             
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         </section>
-      
+    
             
-        <!-- Formular für Eingaben -------------------------------------------------------- -->
+<!-- Formular für Adressauswahl ------------------------------------------------------------------ -->
 
         <form class="dropdownTitel" id="dataDropdown">
             <label for="address">Adresse:</label>
@@ -125,14 +125,12 @@
                 <option value="Zürcherstrasse 464">Zürcherstrasse 464</option>
                 <option value="Zürcherstrasse 511">Zürcherstrasse 511</option>
             </select>
-<!--             <br>
-            <button type="secondSubmit">Suche</button> -->
         </form>
 
 
-        <!-- Auslastung per Tag pro Adresse -------------------------------------------------------- -->
+<!-- Grafik 2 (Auslastung per Tag pro Adresse) -------------------------------------------------------- -->
 
-        <section class="graphicSection">
+        <section class="graphicSectionTwo">
             <div>
                 <canvas id="myChart"></canvas>
             </div>
@@ -140,14 +138,15 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         </section>
+<!-- ---------------------------------------------------------------------------------- -->
 
-
+       
         <div id="map" style="width: 100%; height: 500px; border-radius: 10px;"></div>
 
 
     </section>
 
-<!-- ---------------------------------------------------------------------------------- -->
+
 
 
     <section class="journalismusSection">
@@ -155,12 +154,12 @@
 
         <div class="journalismusTextboxen">
             <div class="journalismusTextboxLinks">
-                <h3>Belegung in St. Gallen</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consectetur cupiditate quas labore omnis, mollitia aliquam modi ipsa impedit reprehenderit accusamus perferendis cumque vero eos totam illum corrupti possimus debitis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quia autem quos facere officia asperiores provident cupiditate modi eius eligendi. Nihil rerum repudiandae, vitae placeat architecto distinctio tempore maxime hic?<br><br><br><br></p>            </div>
-
+                <h3>Die Datendarstellung</h3>
+                <p>Die erste Grafik zeigt die 5 meistbelegten Ladestationen im ausgewählten Zeitraum an. Die zweite Grafik zeigt die Auslastung in Prozent eines bestimmten Ladeortes für jeden Wochentag in der Zeitspanne an. <br> <br>Da es an einem Standort potentiell mehr als nur einen Platz zum Laden gibt, wird die Auslastungrate jeweils immer für einen gesamten Standort berechnet. Die Auslastungsrate ergibt sich aus der Anzahl der belegten Stationen und der Gesamtanzahl an aufgezeichneten Statusabfragen eines Ladeortes. <br> <br>Die Karte verbildlicht schliesslich ob Ladestationen eher im Zentrum oder am Stadtrand liegen.<br><br><br><br><br></p>
+            </div>
             <div class="journalismusTextboxRechts">
-                <h3>Laden in St. Gallen</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt pariatur a, dolore reprehenderit dolorem est quas maiores veniam, unde eligendi id nemo corrupti, modi laudantium dolorum fugiat possimus repellendus magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, vitae iste. Cum voluptate aperiam eum consectetur explicabo, placeat ipsa molestiae natus repellendus ullam laborum excepturi voluptates. Quaerat maiores praesentium perspiciatis.<br><br><br><br></p>
+                <h3>Strom für die Zukunft</h3>
+                <p>Elektromobilität spielt eine entscheidende Rolle im Ausbau von nachhaltiger Mobilität. Mit einer ausgebauten und flächendeckenden Lade-Infrastruktur erleichtert die Stadt St. Gallen den Umstieg auf E-Fahrzeuge und kann so nicht nur einen Beitrag zum Klimaschutz leisten, sondern auch ihre Luftqualität deutlich verbessern. <br><br>Die Visualisierung von Belegungsdaten der Ladesäulen ermöglicht es, Engpässe zu erkennen, die Infrastruktur bedarfsgerecht auszubauen und die Nutzung für E-Auto-Fahrer zu optimieren. So unterstützt die Datendarstellung eine zukunftsfähige, ressourcenschonende Mobilität. <br><br><br><br><br></p>
             </div>
         </div>
     </section>
