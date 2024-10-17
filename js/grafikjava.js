@@ -127,7 +127,7 @@ const AnotherapiURL = 'https://projekt.rotweissbunt.com/unload.php';
 function insertDataToChart(top5Results) {
     const address = [];
     const auslastungInProzent = [];
-    let label = "Ladestationen mit der höchsten prozentualen Auslastung im ausgewählten Zeitraum";
+    let label = "Auslastung im ausgewählten Zeitraum:";
 
     const werteArray = Object.values(top5Results);
     
