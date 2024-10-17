@@ -267,7 +267,7 @@ button:active {
     /*----------------------------------------------*/
 
     h1 {
-        font-size: 65px;
+        font-size: 55px;
     }
     
     h2 {
@@ -279,7 +279,7 @@ button:active {
     }
     
     p {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     /*----------------------------------------------*/
@@ -288,9 +288,10 @@ button:active {
 
     .intoSection {
         background: var(--Background-Intro, linear-gradient(180deg, #000101 0%, #001F32 61%));
-        padding: 20px;
+        padding: 30px;
         position: relative; /* Positionierung für Pseudoelemente */
         overflow: hidden;
+        height: 800px;
     }
     
     .intoSection::before {
@@ -300,15 +301,16 @@ button:active {
         background-repeat: no-repeat; 
         background-position: right center; /* Positioniert das Bild rechts zentriert */
         position: absolute; /* Positioniert das Pseudo-Element relativ zum Eltern-Element */
-        top: 0;
-        right: 0; /* Positioniert das Pseudo-Element rechts */
-        width: 100%; /* Passt die Breite des Pseudo-Elements an */
-        height: 100%; 
+        top: -30%;
+        right: -34%; /* Positioniert das Pseudo-Element rechts */
+        width: 150%; /* Passt die Breite des Pseudo-Elements an */
+        height: 150%; 
         z-index: 1; /* Stellt sicher, dass das Pseudo-Element hinter dem Inhalt liegt */
     }
-    
+
     .haupttitel {
         color: white;
+        padding-top: 290px;
         text-align: left;
         position: relative;
         z-index: 2; /* Stellt sicher, dass der Text über dem Bild liegt */
@@ -333,8 +335,8 @@ button:active {
         background-size: contain;
         background-position: right center;
         background-repeat: no-repeat;
-        margin-right: -670px; /* Verschiebt das Bild (Kabel) horizontal */
-        padding-right: 770px; /* Verschiebt den Text horizontal */
+        margin-right: -620px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 690px; /* Verschiebt den Text horizontal */
     }
     
     .einstiegsFakt2 {
@@ -342,8 +344,8 @@ button:active {
         background-size: contain;
         background-position: right center;
         background-repeat: no-repeat;
-        margin-right: -770px; /* Verschiebt das Bild (Kabel) horizontal */
-        padding-right: 770px; /* Verschiebt den Text horizontal */
+        margin-right: -690px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 690px; /* Verschiebt den Text horizontal */
     }
     
     .einstiegsFakt3 {
@@ -351,35 +353,51 @@ button:active {
         background-size: contain;
         background-position: right center;
         background-repeat: no-repeat;
-        margin-right: -550px; /* Verschiebt das Bild (Kabel) horizontal */
-        padding-right: 750px; /* Verschiebt den Text horizontal */
+        margin-right: -520px; /* Verschiebt das Bild (Kabel) horizontal */
+        padding-right: 590px; /* Verschiebt den Text horizontal */
     }
 
     /*----------------------------------------------*/
     /* MIDDLE-SECTION */
     /*----------------------------------------------*/
 
+        
     .middleSection {
         justify-content: center;
         gap: 20px;
-        padding: 50px 250px;
-    }
+        padding: 30px;
+        }
 
     .middleSectionText{
-        padding: 20px 0px;
         text-align: center;
-
     }
 
-    /*---------------------*/
-    /* Adressen-Dropdown */
-    /*---------------------*/
+    /*--------------------------------------*/
+    /* Adressen-Dropdown und Datumseingabe */
+    /*------------------------------------*/
 
     #dataForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #data Form label, #dataForm input {
+        grid-column: span 1; /* Jedes Label und Input nimmt eine Spalte ein */
+    }
+
+    #dataForm button {
+        grid-column: span 2; /* Button über beide Spalten spannen */
+        justify-self: center; /* Button zentrieren */
+    }
+
+    #dataDropdown {
         display: flex;
         justify-content: center;
         gap: 15px;
-        margin-top: 20px;
+        margin-top: 70px;
         margin-bottom: 30px;
     }
 
@@ -387,6 +405,7 @@ button:active {
         font-family: "Mulish", sans-serif;
         font-size: 18px;
         display: flex;
+        flex-direction: column;
         align-items: center;
     }
 
@@ -413,8 +432,10 @@ button:active {
     button {
         font-family: "Mulish", sans-serif;
         font-size: 18px;
+        display: flex;
         width: 120px;
         height: 40px;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
@@ -431,14 +452,15 @@ button:active {
     }
 
 
-    /*----------------------------------------------*/
+    /*---------------------------------------------------------------------*/
     /* JOURNALISM-SECTION */
-    /*----------------------------------------------*/
+    /*---------------------------------------------------------------------*/
 
     .journalismusSection {
         justify-content: center;
         gap: 20px;
-        padding: 50px 250px;}
+        padding: 0px;
+    }
 
     .journalismusTextboxen {
         display: flex;
@@ -488,7 +510,6 @@ button:active {
         z-index: 1; 
         transform: scaleX(-1);
     }
-
 
 
 }
