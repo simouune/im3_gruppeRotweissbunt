@@ -1,4 +1,8 @@
-#im3_gruppeRotweissbunt
+Fachhochschule Graubünden, Multimedia Production
+HS24, Interaktive Medien III, 18. Oktober 2024
+Gruppe rotweissbunt
+Carina Bihlmayer und Simone Etter, mmp23c
+
 
 ## Das Projekt 
 ### Kurzbeschreibung des Projekts:
